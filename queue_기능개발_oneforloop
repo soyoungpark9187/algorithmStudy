@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    vector<int> answer;
+    int days = 0;
+    int period;
+    int max_period=0;
+    for (int i=0; i<progresses.size(); i++) {
+        period = (99-progresses.at(i))/speeds.at(i) + 1;
+        if (answer.empty() || period > max_period) {
+            answer.push_back(1);
+        }
+        else {
+            answer.back()++;
+        }
+        if (max_period < period)
+            max_period = period;
+    }
+    return answer;
+}
