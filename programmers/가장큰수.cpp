@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <math.h>
 using namespace std;
-int i=1;
+
 bool compare (int a, int b) {
     string a_str = to_string(a);
     string b_str = to_string(b);
