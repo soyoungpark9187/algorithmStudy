@@ -4,9 +4,10 @@
 using namespace std;
 int isDec(int n) {
     int flag=1;
-    if (n==0 || n ==1)
+    if (n==0 || n ==1 || n%2==0)
         flag = 0;
-    for (int i=2; i<n; i++) {
+    if (n==2) flag=1;
+    for (int i=3; i<n; i+=2) {
         if (n%i==0) 
             flag = 0;
     }
