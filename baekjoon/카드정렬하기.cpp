@@ -3,21 +3,21 @@ using namespace std;
 
 int main() {
   int n;
-  vector<int> v;
+  priority_queue< int, vector<int>, greater<int>> pq;
   int cnt = 0;
   int num;
   cin >> n;
   for (int i=0; i<n; i++) {
     cin >> num;
-    v.push_back(num);
+    pq.push(num);
   }
-  while(v.size() > 2) {
-    sort(v.begin(), v.end());
-    v.push_back(v.at(0)+v.at(1));
-    cnt+=(v.at(0)+v.at(1));
-    v.erase(v.begin());
-    v.erase(v.begin());
+  while(pq.size() > 1) {
+    int new_n = pq.top();
+    pq.pop();
+    new_n += pq.top();
+    cnt+=new_n;
+    pq.push(new_n);
+    pq.pop();
   }
-  cnt+=(v.at(0)+v.at(1));
   cout << cnt;
 }
