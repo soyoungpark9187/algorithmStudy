@@ -13,7 +13,6 @@ int main() {
       sum+=int(s[i]-'0');
   }
   sort(c.begin(), c.end());
-  string r;
   for (int i=0; i<c.size(); i++) {
     cout << c[i];
   }
