@@ -18,7 +18,6 @@ int main() {
   iter.push(1);
   virused.push_back(1);
   checked[1] = 1;
-  int it = 0;
   while (!iter.empty()) {
     for (int i=0; i< v[iter.front()].size(); i++) {
       int to = v[iter.front()][i];
@@ -27,7 +26,6 @@ int main() {
         iter.push(to);
       checked[to] = 1;
     }
-    it++;
     iter.pop();
   }
   sort(virused.begin(), virused.end());
