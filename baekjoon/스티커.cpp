@@ -16,21 +16,12 @@ int main() {
       scanf("%d", &s[1][i]);
     }
     dp[0][0] = s[0][0];
-    dp[1][0] = s[1][0];    
-    for (int i=1; i<n; i++) {
-      for (int j=0; j<2; j++) {
-        for (int y=0; y<i; y++) {
-          for (int x=0; x<2; x++) {
-            if ((y==i && x==j-1) || (y==i-1 && x==j)) {
-                continue;
-            }
-            else {
-              dp[j][i] = max(dp[j][i], dp[x][y]);
-            }
-          }
-        }
-        dp[j][i] += s[j][i];
-      }
+    dp[1][0] = s[1][0];
+    dp[0][1] = s[0][1] + dp[1][0];
+    dp[1][1] = s[1][1] + dp[0][0];
+    for (int i=2; i<n; i++) {
+      dp[0][i] = s[0][i] + max(dp[1][i-2], dp[1][i-1]);
+      dp[1][i] = s[1][i] + max(dp[0][i-2], dp[0][i-1]);
     }
     printf("%d\n", max(dp[0][n-1], dp[1][n-1]));
   }
